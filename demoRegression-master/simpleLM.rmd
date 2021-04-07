@@ -42,8 +42,7 @@ abline(AgeModel)
 summary.lm(AgeModel)
 ```
 
-The residual standard error is lower and the r-squared is higher, Its not better than the other model
-
+The residual standard error is 7.511 and the adjusted r-squared is 0.5075. Since the residual standard error is low and the adjusted r-squared is high, this is not the best model to predict. 
 
 ```{r}
 HeadLengthModel <- lm(LENGTH~HEADLEN,data=bears)
