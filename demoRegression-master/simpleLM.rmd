@@ -69,12 +69,14 @@ abline(ChestModel)
 summary.lm(ChestModel)
 ```
 
+The residual standard error is 4.939 and the adjusted r-squared is 0.7869. Since the residual standard error is low and the adjusted r-squared is high, this is the next best model to predict next to length~headlen
 ```{r}
 WeightModel <- lm(LENGTH~WEIGHT,data=bears)
 plot(LENGTH~WEIGHT,data=bears)
 abline(WeightModel)
 summary.lm(WeightModel)
 ```
+The residual standard error is 5.431 and the adjusted r-squared is 0.7423. Since the residual standard error is high and the adjusted r-squared is low, this is not the best model to predict. 
 
 # Summary Statement  
 
