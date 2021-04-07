@@ -13,6 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 bears <- read.csv(file="BEARS.csv",header = TRUE)
+bears$SEX <- as.factor(bears$SEX)
 ```
 
 ## Model LENGTH ~ NECK  this is an example  
@@ -34,3 +35,49 @@ predict(simp,new,se.fit=TRUE)
 ```
 ## Surely there is another variable that can better predict LENGTH than NECK. Find one and compare its performance to that of neck by it value of Adjusted-Rsquared (bigger is better).
 
+```{r}
+AgeModel <- lm(LENGTH~AGE,data=bears)
+plot(LENGTH~AGE,data=bears)
+abline(AgeModel)
+summary.lm(AgeModel)
+```
+
+The residual standard error is lower and the r-squared is higher, Its not better than the other model
+
+
+```{r}
+HeadLengthModel <- lm(LENGTH~HEADLEN,data=bears)
+plot(LENGTH~HEADLEN,data=bears)
+plot(LENGTH~HEADLEN,data=bears)
+abline(HeadLengthModel)
+summary.lm(HeadLengthModel)
+```
+The one is better than the first model but lets check all the others to see if its the best.
+
+```{r}
+HeadWidthModel <- lm(LENGTH~HEADWTH,data=bears)
+plot(LENGTH~HEADWTH,data=bears)
+abline(HeadWidthModel)
+summary.lm(HeadWidthModel)
+```
+This not better than the first model in fact its worst
+
+```{r}
+ChestModel <- lm(LENGTH~CHEST,data=bears)
+plot(LENGTH~CHEST,data=bears)
+abline(ChestModel)
+summary.lm(ChestModel)
+```
+
+```{r}
+WeightModel <- lm(LENGTH~WEIGHT,data=bears)
+plot(LENGTH~WEIGHT,data=bears)
+abline(WeightModel)
+summary.lm(WeightModel)
+```
+
+# Summary Statement  
+
+We created six different models from the bears data to predict length from other measurements. We found that the best model for this was LENGTH~HEADLEN. This model had the residual standard error of 4.235 and the adjusted r-squared of 0.8434. That shows that there is 84% of error not happening and that this model is the one with the least errors. Since the residual standard error is low and the adjusted r-squared is high, this is good and shows that its the best model. 
+
+The next best model is the LENGTH~CHEST. This model had a residual standard error of 4.939 and an adjusted R-squared of 0.7869. This model was close second with the   residual standard error just slightly higher and the adjusted R-squared just slightly lower than the length model
